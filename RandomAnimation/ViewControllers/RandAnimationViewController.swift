@@ -43,6 +43,7 @@ final class RandAnimationViewController: UIViewController {
         sender.animate()
         
     }
+    
     private func getRandomValueAnimation(){
         let anination = animations.randomElement()
          
@@ -54,21 +55,17 @@ final class RandAnimationViewController: UIViewController {
         
         forceAnimation = Int.random(in: 1...5)
         
-        delayAnimation = Double.random(in: 0...1)
-        delayAnimation = roundDown(delayAnimation, toNearest: 0.1)
+        delayAnimation = Double(String(format: "%.1f", Double.random(in: 0...1))) ?? 0.0
         
         durationAnimation = Int.random(in: 1...6)
         
     }
+    
     private func setValueTitle(){
         animationNameLabel.text = "Preset: \(nameAnimation)"
         curveNumderLabel.text = "Curve: \(curveAnimation)"
         forceNumberLabel.text = "Force: \(forceAnimation)"
         delayNumberLabel.text = "Delay: \(delayAnimation)"
     }
-    
-    private func roundDown(_ value: Double, toNearest: Double) -> Double {
-        return floor(value / toNearest) * toNearest
-      }
 }
 
