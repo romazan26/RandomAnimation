@@ -12,6 +12,12 @@ final class RandAnimationViewController: UIViewController {
 
     var animations = Animation.getAnimations()
     
+    private var nameAnimation = ""
+    private var curveAnimation = ""
+    private var forceAnimation = 0
+    private var delayAnimation = 0.0
+    private var durationAnimation = 0
+    
     @IBOutlet var viewAnimation: SpringView!
     @IBOutlet var runButtonOutlet: SpringButton!
 
@@ -21,12 +27,12 @@ final class RandAnimationViewController: UIViewController {
     @IBOutlet var animationNameLabel: UILabel!
     
     @IBAction func runButtonStart(_ sender: SpringButton) {
-        print(animations)
-        viewAnimation.animation = "shake"
-        viewAnimation.curve = "easeIn"
-        viewAnimation.force = 2
-        viewAnimation.duration = 1
-        viewAnimation.delay = 0.3
+        getRandomValueAnimation()
+        setValueTitle()
+        
+        viewAnimation.force = CGFloat(forceAnimation)
+        viewAnimation.duration = CGFloat(durationAnimation)
+        viewAnimation.delay = CGFloat(delayAnimation)
         viewAnimation.animate()
         
         sender.animation = "shake"
@@ -37,6 +43,32 @@ final class RandAnimationViewController: UIViewController {
         sender.animate()
         
     }
+    private func getRandomValueAnimation(){
+        let anination = animations.randomElement()
+         
+        nameAnimation = anination?.nameAnimation ?? ""
+        curveAnimation = anination?.curveAnimation ?? ""
+        
+        viewAnimation.animation = nameAnimation
+        viewAnimation.curve = curveAnimation
+        
+        forceAnimation = Int.random(in: 1...5)
+        
+        delayAnimation = Double.random(in: 0...1)
+        delayAnimation = roundDown(delayAnimation, toNearest: 0.1)
+        
+        durationAnimation = Int.random(in: 1...6)
+        
+    }
+    private func setValueTitle(){
+        animationNameLabel.text = "Preset: \(nameAnimation)"
+        curveNumderLabel.text = "Curve: \(curveAnimation)"
+        forceNumberLabel.text = "Force: \(forceAnimation)"
+        delayNumberLabel.text = "Delay: \(delayAnimation)"
+    }
     
+    private func roundDown(_ value: Double, toNearest: Double) -> Double {
+        return floor(value / toNearest) * toNearest
+      }
 }
 
