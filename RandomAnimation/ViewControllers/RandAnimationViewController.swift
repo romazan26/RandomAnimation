@@ -10,6 +10,8 @@ import SpringAnimation
 
 final class RandAnimationViewController: UIViewController {
 
+    var animations = Animation.getAnimations()
+    
     @IBOutlet var viewAnimation: SpringView!
     @IBOutlet var runButtonOutlet: SpringButton!
 
@@ -19,6 +21,7 @@ final class RandAnimationViewController: UIViewController {
     @IBOutlet var animationNameLabel: UILabel!
     
     @IBAction func runButtonStart(_ sender: SpringButton) {
+        print(animations)
         viewAnimation.animation = "shake"
         viewAnimation.curve = "easeIn"
         viewAnimation.force = 2

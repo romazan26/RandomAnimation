@@ -62,12 +62,12 @@
 		30AEB4A12A38DF4D0012F06F /* RandomAnimation */ = {
 			isa = PBXGroup;
 			children = (
+				30AEB4C22A38F0910012F06F /* Services */,
 				30AEB4BF2A38EC2C0012F06F /* Models */,
 				30AEB4B92A38E0CF0012F06F /* Resources */,
 				30AEB4B82A38DFC60012F06F /* App */,
 				30AEB4B72A38DF9F0012F06F /* StoryBoard */,
 				30AEB4B62A38DF850012F06F /* ViewControllers */,
-				30AEB4C02A38EC4A0012F06F /* DataStore.swift */,
 			);
 			path = RandomAnimation;
 			sourceTree = "<group>";
@@ -113,6 +113,14 @@
 				30AEB4BD2A38EB960012F06F /* Animations.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		30AEB4C22A38F0910012F06F /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				30AEB4C02A38EC4A0012F06F /* DataStore.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

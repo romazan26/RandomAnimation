@@ -11,11 +11,23 @@ struct Animation {
     let curveAnimation: String
     
     static func getAnimations() -> [Animation] {
-        var animation: [Animation] = []
+        var animations: [Animation] = []
         
-        var namesAnimation = DataStore.shared.nameAnimation
-        var curvesAnimation = DataStore.shared.curveAnimation
+        let namesAnimation = DataStore.shared.nameAnimation
+        let curvesAnimation = DataStore.shared.curveAnimation
         
-        return animation
+        let itterationCount = min(
+            namesAnimation.count,
+            curvesAnimation.count
+        )
+        for index in 0..<itterationCount {
+            let animation = Animation(
+                nameAnimation: namesAnimation[index],
+                curveAnimation: curvesAnimation[index]
+            )
+            animations.append(animation)
+        }
+        
+        return animations
     }
 }
